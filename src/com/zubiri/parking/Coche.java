@@ -8,8 +8,8 @@ public class Coche extends Vehiculo {
 	int consumo100km = 0;
 	
 	//Constructores
-	public Coche(int numRuedas, boolean motor, String marca, boolean automatico, int consumo100km) {
-		super(numRuedas, motor, marca);
+	public Coche(int numRuedas, boolean motor, String marca, String matricula, boolean automatico, int consumo100km) {
+		super(numRuedas, motor, marca, matricula);
 		this.automatico = automatico;
 		this.consumo100km = consumo100km;
 	}
@@ -52,7 +52,8 @@ public class Coche extends Vehiculo {
 	//Otros métodos
 	double calcConsumo(int numKm, double precioGasoil) {
 		double consumoTotal = 0;
-    	
+		
+		consumoTotal = (numKm * precioGasoil);    	
     	
 		return consumoTotal;
 	}
@@ -69,5 +70,16 @@ public class Coche extends Vehiculo {
 		formatted += "Consumo en 100km: " + this.consumo100km + "\n";
 				
 		return formatted;
+	}
+	
+	@Override
+	public void mostrarVehiculo() {
+		super.mostrarVehiculo();
+		if (automatico) {
+			System.out.println("Es automático");
+		} else {
+			System.out.println("NO es automático");
+		}
+		System.out.println("Consumo en 100km: " + this.consumo100km);
 	}
 }
